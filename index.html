@@ -20,19 +20,12 @@
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
-
-    html, body {
-      height: 100%;
-      overflow: hidden;
-      background: #0a0a0a;
-      font-family: system-ui, -apple-system, sans-serif;
-    }
-  <audio id="backgroundMusic" loop>
+      <audio id="backgroundMusic" loop>
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <button onclick="
-  const music = document.musica.mp3 ('backgroundMusic');
+  const music = document.getElementById('backgroundMusic');
   if (music.paused) {
     music.play();
     this.innerText = 'Ⅱ Pausar música';
@@ -43,6 +36,14 @@
 ">
   ♫ Reproducir música
 </button>
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: #0a0a0a;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+  
     body {
       display: flex;
       align-items: center;
