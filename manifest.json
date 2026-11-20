@@ -1,0 +1,30 @@
+{
+  "name": "Pienso En Ti <3",
+  "short_name": "Pienso En Ti",
+  "description": "Una carta para ti",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fce4ec",
+  "theme_color": "#ff69b4",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
