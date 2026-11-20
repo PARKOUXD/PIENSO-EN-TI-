@@ -20,22 +20,6 @@
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
-      <audio id="backgroundMusic" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<button onclick="
-  const music = document.("musica.mp3");
-  if (music.paused) {
-    music.play();
-    this.innerText = 'Ⅱ Pausar música';
-  } else {
-    music.pause();
-    this.innerText = '♫ Reproducir música';
-  }
-">
-  ♫ Reproducir música
-</button>
 
     html, body {
       height: 100%;
@@ -43,7 +27,7 @@
       background: #0a0a0a;
       font-family: system-ui, -apple-system, sans-serif;
     }
-  
+
     body {
       display: flex;
       align-items: center;
@@ -52,22 +36,21 @@
       background: radial-gradient(ellipse at center, #1a0a12 0%, #0a0a0a 70%);
     }
 
-    /* Soft pink ambient */
     body::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 45%, rgba(255, 50, 150, 0.12) 0%, transparent 55%);
+      background: radial-gradient(circle at 50% 45%, rgba(255, 50, 150, 0.13) 0%, transparent 55%);
       pointer-events: none;
     }
 
-    /* ========== ENVELOPE ========== */
+    /* ========== SOBRE ========== */
     .envelope-container {
       position: relative;
       width: min(340px, 82vw);
       cursor: pointer;
       z-index: 10;
-      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease;
       -webkit-user-select: none;
       user-select: none;
     }
@@ -76,12 +59,12 @@
       width: 100%;
       height: auto;
       display: block;
-      filter: drop-shadow(0 20px 40px rgba(255, 20, 147, 0.35));
-      transition: filter 0.4s ease, transform 0.4s ease;
+      filter: drop-shadow(0 22px 45px rgba(255, 20, 147, 0.4));
+      transition: filter 0.4s ease, transform 0.35s ease;
     }
 
     .envelope-container:active img {
-      transform: scale(0.97);
+      transform: scale(0.96);
     }
 
     .envelope-container.opening {
@@ -90,39 +73,37 @@
 
     .envelope-container.opened {
       opacity: 0;
-      transform: scale(0.75) translateY(-60px);
+      transform: scale(0.72) translateY(-70px);
       pointer-events: none;
     }
 
-    /* Soft glow behind */
     .glow {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 120%;
-      height: 120%;
+      width: 130%;
+      height: 130%;
       transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(255, 80, 160, 0.35) 0%, transparent 65%);
-      filter: blur(30px);
+      background: radial-gradient(circle, rgba(255, 80, 160, 0.38) 0%, transparent 65%);
+      filter: blur(32px);
       z-index: -1;
-      animation: pulse 3.5s ease-in-out infinite;
+      animation: pulse 3.2s ease-in-out infinite;
       pointer-events: none;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.08); }
+      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.95; transform: translate(-50%, -50%) scale(1.1); }
     }
 
-    /* Hint */
     .hint {
       position: absolute;
-      bottom: -42px;
+      bottom: -44px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 13px;
-      color: rgba(255, 160, 200, 0.65);
-      letter-spacing: 2px;
+      color: rgba(255, 170, 210, 0.7);
+      letter-spacing: 2.5px;
       text-transform: lowercase;
       white-space: nowrap;
       transition: opacity 0.4s;
@@ -134,22 +115,22 @@
       opacity: 0;
     }
 
-    /* ========== LETTER ========== */
+    /* ========== CARTA ========== */
     .letter-wrapper {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.55);
+      transform: translate(-50%, -50%) scale(0.5);
       opacity: 0;
       width: min(94vw, 460px);
       max-height: 90vh;
       overflow-y: auto;
       overflow-x: hidden;
       border-radius: 10px;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.55);
       z-index: 5;
       pointer-events: none;
-      transition: opacity 0.9s ease 0.35s, transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+      transition: opacity 0.9s ease 0.3s, transform 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
       background: #fff;
       -webkit-overflow-scrolling: touch;
     }
@@ -177,7 +158,6 @@
       border-radius: 3px;
     }
 
-    /* Click area */
     .click-area {
       position: absolute;
       inset: 0;
@@ -187,7 +167,7 @@
 </head>
 <body>
 
-  <!-- Envelope -->
+  <!-- SOBRE -->
   <div class="envelope-container" id="envelope">
     <div class="glow"></div>
     <img src="envelope.png" alt="Sobre" draggable="false" />
@@ -195,13 +175,13 @@
     <div class="click-area" id="clickArea"></div>
   </div>
 
-  <!-- Letter -->
+  <!-- CARTA -->
   <div class="letter-wrapper" id="letter">
     <img src="carta.png" alt="Carta" draggable="false" />
   </div>
 
-  <!-- Audio -->
-  <audio id="bgMusic" src="musica.mp3" loop preload="auto"></audio>
+  <!-- AUDIOS -->
+  <audio id="bgMusic" src="música.mp3" loop preload="auto"></audio>
   <audio id="openSound" src="open.mp3" preload="auto"></audio>
 
   <script>
@@ -212,25 +192,54 @@
     const openSound = document.getElementById('openSound');
 
     let opened = false;
+    let musicStarted = false;
 
-    bgMusic.volume = 0.55;
-    openSound.volume = 0.65;
+    bgMusic.volume = 0.6;
+    openSound.volume = 0.7;
+
+    // Intentar que la música suene desde el inicio
+    function tryPlayMusic() {
+      if (musicStarted) return;
+      const playPromise = bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            musicStarted = true;
+          })
+          .catch(() => {
+            // El navegador bloqueó el autoplay (normal en móviles)
+            // Se iniciará en cuanto el usuario toque el sobre
+          });
+      }
+    }
+
+    // Intentar al cargar
+    window.addEventListener('load', () => {
+      tryPlayMusic();
+    });
+
+    // También intentar con la primera interacción de cualquier tipo (por si el autoplay falla)
+    document.addEventListener('touchstart', tryPlayMusic, { once: true, passive: true });
+    document.addEventListener('click', tryPlayMusic, { once: true });
 
     function openLetter() {
       if (opened) return;
       opened = true;
 
+      // Asegurar que la música suene
+      tryPlayMusic();
+
+      // Sonido de abrir
       openSound.currentTime = 0;
       openSound.play().catch(() => {});
 
-      bgMusic.play().catch(() => {});
-
+      // Animación del sobre
       envelope.classList.add('opening');
 
       setTimeout(() => {
         envelope.classList.add('opened');
         letter.classList.add('show');
-      }, 450);
+      }, 420);
     }
 
     clickArea.addEventListener('click', openLetter);
@@ -239,7 +248,7 @@
       openLetter();
     }, { passive: false });
 
-    // Block further interaction after open
+    // Bloquear interacciones después de abrir
     document.addEventListener('click', (e) => {
       if (opened && !letter.contains(e.target)) {
         e.preventDefault();
@@ -247,33 +256,12 @@
       }
     }, true);
 
-    // PWA Service Worker
+    // Service Worker (PWA)
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js').catch(() => {});
       });
     }
-  <audio id="musica.mp3" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-  <audio id="backgroundMusic" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<button onclick="
-  const music = document.musica.mp3('musica.mp3');
-  if (music.paused) {
-    music.play();
-    this.innerText = 'Ⅱ Pausar música';
-  } else {
-    music.pause();
-    this.innerText = '♫ Reproducir música';
-  }
-">
-  ♫ Reproducir música
-</button>
-    
   </script>
 </body>
 </html>
